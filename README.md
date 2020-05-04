@@ -1,3 +1,6 @@
+Concerns/Potential Issues
+DrawObjectFactory must be static .
+
 # paint
 create canvas and paint it with figures
 

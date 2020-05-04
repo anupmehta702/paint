@@ -1,13 +1,15 @@
 package com.anup.paint;
 
-import com.anup.paint.command.CommandInput;
-import com.anup.paint.command.CommandType;
+import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
+import com.anup.paint.draw.DrawObjectFactory;
 
 public final class Paint {
 
     private final char canvas[][];
     private final int width;
     private final int height;
+    private DrawOnCanvasCommandHandler canvasCommandHandler = new DrawOnCanvasCommandHandler(new DrawObjectFactory());
 
     public Paint(int width, int height) {
         this.width = width;
@@ -54,7 +56,7 @@ public final class Paint {
         System.out.println();
     }
 
-    public void executeCommand(CommandType cmdType, CommandInput input){
-
+    public void executeCommand( InputCommand input){
+        canvasCommandHandler.executeCommand(input,canvas.clone());
     }
 }

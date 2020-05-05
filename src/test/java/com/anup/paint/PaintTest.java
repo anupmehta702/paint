@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import static com.anup.paint.CreateCanvasHelper.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -18,6 +17,8 @@ import static org.mockito.Mockito.verify;
 public class PaintTest {
 
     Paint paint;
+    int width = 4;
+    int height = 4 ;
 
     @Before
     public void setup(){
@@ -26,7 +27,7 @@ public class PaintTest {
 
     @Test
     public void createCanvasTest(){
-        paint.createCanvas(4,4);
+        paint.createCanvas(width,height);
         assertNotNull(paint.getCanvas());
     }
 
@@ -37,7 +38,7 @@ public class PaintTest {
         paint.executeCanvasCommand(drawLineCommand);
 
         Canvas expectedCanvas = new Canvas(width,height);
-        char[][] drawingArea = expectedCanvas.getClonedDrawingArea();
+        Character[][] drawingArea = expectedCanvas.getClonedDrawingArea();
         drawingArea[2][2] = 'x';drawingArea[2][3] = 'x';drawingArea[2][4] = 'x';
 
         assertArrayEquals(drawingArea,paint.getCanvas().getClonedDrawingArea());

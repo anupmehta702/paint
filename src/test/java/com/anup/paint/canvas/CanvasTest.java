@@ -22,62 +22,62 @@ public class CanvasTest {
     @Test
     public void paintInitializationTest() {
 
-        char expectedCanvas[][] = new char[width + 2][height + 2];
+        Character expectedDrawingArea[][] = new Character[width + 2][height + 2];
 
-        initalizeDrawingArea(expectedCanvas);
-        markColumnBoundary(expectedCanvas);
-        markRowBoundary(expectedCanvas);
+        initalizeDrawingArea(expectedDrawingArea);
+        markColumnBoundary(expectedDrawingArea);
+        markRowBoundary(expectedDrawingArea);
 
-        assertArrayEquals(expectedCanvas, canvas.getClonedDrawingArea());
+        assertArrayEquals(expectedDrawingArea, canvas.getClonedDrawingArea());
         canvas.print();
     }
 
-    private void markRowBoundary(char[][] expectedCanvas) {
-        expectedCanvas[0][0] = '-';
-        expectedCanvas[0][1] = '-';
-        expectedCanvas[0][2] = '-';
-        expectedCanvas[0][3] = '-';
-        expectedCanvas[0][4] = '-';
-        expectedCanvas[0][5] = '-';
-        expectedCanvas[5][0] = '-';
-        expectedCanvas[5][1] = '-';
-        expectedCanvas[5][2] = '-';
-        expectedCanvas[5][3] = '-';
-        expectedCanvas[5][4] = '-';
-        expectedCanvas[5][5] = '-';
+    private void markRowBoundary(Character[][] expectedDrawingArea) {
+        expectedDrawingArea[0][0] = '-';
+        expectedDrawingArea[0][1] = '-';
+        expectedDrawingArea[0][2] = '-';
+        expectedDrawingArea[0][3] = '-';
+        expectedDrawingArea[0][4] = '-';
+        expectedDrawingArea[0][5] = '-';
+        expectedDrawingArea[5][0] = '-';
+        expectedDrawingArea[5][1] = '-';
+        expectedDrawingArea[5][2] = '-';
+        expectedDrawingArea[5][3] = '-';
+        expectedDrawingArea[5][4] = '-';
+        expectedDrawingArea[5][5] = '-';
     }
 
-    private void markColumnBoundary(char[][] expectedCanvas) {
-        expectedCanvas[1][0] = '|';
-        expectedCanvas[2][0] = '|';
-        expectedCanvas[3][0] = '|';
-        expectedCanvas[4][0] = '|';
-        expectedCanvas[5][0] = '|';
-        expectedCanvas[1][5] = '|';
-        expectedCanvas[2][5] = '|';
-        expectedCanvas[3][5] = '|';
-        expectedCanvas[4][5] = '|';
-        expectedCanvas[5][5] = '|';
+    private void markColumnBoundary(Character[][] expectedDrawingArea) {
+        expectedDrawingArea[1][0] = '|';
+        expectedDrawingArea[2][0] = '|';
+        expectedDrawingArea[3][0] = '|';
+        expectedDrawingArea[4][0] = '|';
+        expectedDrawingArea[5][0] = '|';
+        expectedDrawingArea[1][5] = '|';
+        expectedDrawingArea[2][5] = '|';
+        expectedDrawingArea[3][5] = '|';
+        expectedDrawingArea[4][5] = '|';
+        expectedDrawingArea[5][5] = '|';
     }
 
-    private void initalizeDrawingArea(char[][] expectedCanvas) {
+    private void initalizeDrawingArea(Character[][] expectedDrawingArea) {
         for (int i = 0; i < width + 2; i++) {
             for (int j = 0; j < height + 2; j++) {
-                expectedCanvas[i][j] = ' ';
+                expectedDrawingArea[i][j] = ' ';
             }
         }
     }
 
     @Test
     public void canvasCloneTest() {
-        char[][] originalCanvas = canvas.getClonedDrawingArea();
-        originalCanvas[2][3] = 'x';
-        assertNotEquals(originalCanvas, canvas.getClonedDrawingArea());
+        Character[][] clonedDrawingArea = canvas.getClonedDrawingArea();
+        clonedDrawingArea[2][3] = 'x';
+        assertNotEquals(clonedDrawingArea[2][3], canvas.getClonedDrawingArea()[2][3]);
     }
 
     @Test
     public void mergeDrawingChangesTest(){
-        char[][] newDrawingArea = canvas.getClonedDrawingArea();
+        Character[][] newDrawingArea = canvas.getClonedDrawingArea();
         newDrawingArea[2][3] = 'x';
         assertNotEquals(newDrawingArea, canvas.getClonedDrawingArea());
         canvas.mergeDrawingChanges(newDrawingArea);

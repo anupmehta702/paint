@@ -5,10 +5,11 @@ Treated canvas creation as separate command .
 Did not have command for every operation .Instead had only one command which took care of all operation
 
 TODO
-Create canvas object with height & Width
+Create canvas object with height & Width - Done
 OutOfBoundaryException write logic in handler
-Test case for execute method in Paint
-rename Draw and execute method 
+Test case for execute method in Paint -Done
+rename Draw and execute method - DOne 
+Mock test for print method in Paint 
 
 # paint
 create canvas and paint it with figures

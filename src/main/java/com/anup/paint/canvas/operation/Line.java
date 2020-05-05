@@ -9,7 +9,7 @@ public class Line implements CanvasOperation {
 
     @Override
     public void execute(InputCommand input, Canvas canvas) throws CanvasOperationBaseException {
-        char[][] initialDrawingArea = canvas.getClonedDrawingArea();
+        Character[][] initialDrawingArea = canvas.getClonedDrawingArea();
         if (isLineToDrawHorizontal(input)) {
             drawHorizontalLine(input, initialDrawingArea);
         } else if (isLineToDrawVertical(input)) {
@@ -20,7 +20,7 @@ public class Line implements CanvasOperation {
         canvas.mergeDrawingChanges(initialDrawingArea);
     }
 
-    private void drawVerticalLine(InputCommand input, char[][] canvas) {
+    private void drawVerticalLine(InputCommand input, Character[][] canvas) {
         for (int i = input.getStart().getX(); i <= input.getEnd().getX(); i++) {
             canvas[i][input.getStart().getY()] = input.getMarker();
         }
@@ -34,7 +34,7 @@ public class Line implements CanvasOperation {
         return input.getStart().getY() == input.getEnd().getY();
     }
 
-    private void drawHorizontalLine(InputCommand input, char[][] canvas) {
+    private void drawHorizontalLine(InputCommand input, Character[][] canvas) {
         for (int i = input.getStart().getY(); i <= input.getEnd().getY(); i++) {
             canvas[input.getStart().getX()][i] = input.getMarker();
         }

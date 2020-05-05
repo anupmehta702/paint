@@ -3,19 +3,19 @@ package com.anup.paint.canvas;
 public final class Canvas {
     private final int width;
     private final int height;
-    private char[][] drawingArea;
+    private Character[][] drawingArea;
 
     public Canvas(int width, int height) {
         this.width = width;
         this.height = height;
-        this.drawingArea = new char[width + 2][height + 2];
+        this.drawingArea = new Character[height + 2][width + 2];
         initializeCanvas();
         markBorder();
     }
 
     private void initializeCanvas() {
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
+        for (int i = 0; i < drawingArea.length; i++) {
+            for (int j = 0; j < drawingArea[0].length; j++) {
                 drawingArea[i][j] = ' ';
             }
         }
@@ -23,25 +23,31 @@ public final class Canvas {
 
     private void markBorder() {
         //for  columns
-        for (int i = 0; i < height + 2; i++) {
+        for (int i = 0; i < drawingArea[0].length; i++) {
             drawingArea[i][0] = '|';
             drawingArea[i][width + 1] = '|';
         }
         //for rows
-        for (int i = 0; i < width + 2; i++) {
+        for (int i = 0; i < drawingArea.length; i++) {
             drawingArea[0][i] = '-';
             drawingArea[height + 1][i] = '-';
         }
     }
 
 
-    public char[][] getClonedDrawingArea() {
-        return drawingArea.clone();
+    public Character[][] getClonedDrawingArea() {
+        Character[][] clonedDrawingArea = new Character[drawingArea.length][drawingArea[0].length];
+        for (int i = 0; i < drawingArea.length; i++) {
+            for (int j = 0; j < drawingArea[0].length; j++) {
+                clonedDrawingArea[i][j] = drawingArea[i][j];
+            }
+        }
+        return clonedDrawingArea;//drawingArea.clone();
     }
 
-    public void mergeDrawingChanges(char[][] inputDrawingArea) {
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
+    public void mergeDrawingChanges(Character[][] inputDrawingArea) {
+        for (int i = 0; i < drawingArea.length; i++) {//row
+            for (int j = 0; j < drawingArea[0].length; j++) {//column
                 if (inputDrawingArea[i][j] != ' ' && inputDrawingArea[i][j] != this.drawingArea[i][j]) {
                     this.drawingArea[i][j] = inputDrawingArea[i][j];
                 }
@@ -51,9 +57,9 @@ public final class Canvas {
 
     public void print() {
         System.out.println();
-        for (int i = 0; i < width + 2; i++) {
+        for (int i = 0; i < drawingArea.length; i++) {//row
             System.out.println();
-            for (int j = 0; j < height + 2; j++) {
+            for (int j = 0; j < drawingArea[0].length; j++) {//column
                 System.out.print(drawingArea[i][j]);
             }
         }

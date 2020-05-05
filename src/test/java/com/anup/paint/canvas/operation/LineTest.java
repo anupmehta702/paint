@@ -1,30 +1,26 @@
 package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
-import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.canvas.exception.CanvasOperationBaseException;
+import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.anup.paint.CreateCanvasHelper.printCanvas;
 import static com.anup.paint.command.model.CommandType.LINE;
 import static org.junit.Assert.assertArrayEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class LineTest {
     Canvas inputCanvas;
-    char[][] expectedCanvas;
+    Character[][] expectedCanvas;
     Line line;
 
     @Before
     public void setup() {
         inputCanvas = new Canvas(4,4);
         line = new Line();
-        expectedCanvas = inputCanvas.getClonedDrawingArea();
+        expectedCanvas = new Canvas(4,4).getClonedDrawingArea();
     }
 
     @Test
@@ -35,7 +31,7 @@ public class LineTest {
 
         expectedCanvas[2][2] = 'x';expectedCanvas[2][3] = 'x';expectedCanvas[2][4] = 'x';
         assertArrayEquals(expectedCanvas, inputCanvas.getClonedDrawingArea());
-        printCanvas(inputCanvas.getClonedDrawingArea());
+        inputCanvas.print();
 
     }
 

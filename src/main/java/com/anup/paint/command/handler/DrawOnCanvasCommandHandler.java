@@ -1,10 +1,10 @@
 package com.anup.paint.command.handler;
 
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.exception.InputCommandException;
-import com.anup.paint.draw.CanvasOperation;
-import com.anup.paint.draw.CanvasOperationObjectFactory;
-import com.anup.paint.draw.exception.DrawException;
+import com.anup.paint.canvas.operation.CanvasOperation;
+import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
+import com.anup.paint.canvas.exception.DrawException;
 
 public class DrawOnCanvasCommandHandler {
     private CanvasOperationObjectFactory canvasOperationObjectFactory;

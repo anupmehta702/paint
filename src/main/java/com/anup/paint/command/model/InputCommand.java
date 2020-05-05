@@ -1,4 +1,4 @@
-package com.anup.paint.command;
+package com.anup.paint.command.model;
 
 public final class InputCommand {
 

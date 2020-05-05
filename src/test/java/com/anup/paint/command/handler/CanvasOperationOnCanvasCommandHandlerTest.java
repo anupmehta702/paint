@@ -1,13 +1,13 @@
 package com.anup.paint.command.handler;
 
-import com.anup.paint.command.CommandType;
-import com.anup.paint.command.Coordinates;
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.CommandType;
+import com.anup.paint.command.model.Coordinates;
+import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.exception.InputCommandException;
-import com.anup.paint.draw.CanvasOperationObjectFactory;
-import com.anup.paint.draw.Line;
+import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
+import com.anup.paint.canvas.operation.Line;
 import com.anup.paint.command.exception.CommandTypeNotSupportedException;
-import com.anup.paint.draw.exception.DrawException;
+import com.anup.paint.canvas.exception.DrawException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

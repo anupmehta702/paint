@@ -1,4 +1,4 @@
-package com.anup.paint.draw.exception;
+package com.anup.paint.canvas.exception;
 
 public class DrawException extends Exception {
     public DrawException(String message) {

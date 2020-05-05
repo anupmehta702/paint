@@ -1,6 +1,6 @@
 package com.anup.paint.command.exception;
 
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.InputCommand;
 
 public class CommandTypeNotSupportedException extends InputCommandException{
     public CommandTypeNotSupportedException(InputCommand input) {

@@ -1,8 +1,8 @@
-package com.anup.paint.draw;
+package com.anup.paint.canvas.operation;
 
-import com.anup.paint.command.InputCommand;
-import com.anup.paint.draw.exception.DiagonalLineNotAllowedException;
-import com.anup.paint.draw.exception.DrawException;
+import com.anup.paint.command.model.InputCommand;
+import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
+import com.anup.paint.canvas.exception.DrawException;
 
 public class Line implements CanvasOperation {
 

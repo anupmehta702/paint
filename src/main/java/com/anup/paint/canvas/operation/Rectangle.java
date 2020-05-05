@@ -1,6 +1,6 @@
-package com.anup.paint.draw;
+package com.anup.paint.canvas.operation;
 
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.InputCommand;
 
 public class Rectangle implements CanvasOperation {
 

@@ -1,8 +1,8 @@
 package com.anup.paint;
 
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
-import com.anup.paint.draw.CanvasOperationObjectFactory;
+import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 
 public final class Paint {
 

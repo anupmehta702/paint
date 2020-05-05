@@ -1,7 +1,7 @@
-package com.anup.paint.draw;
+package com.anup.paint.canvas.operation;
 
-import com.anup.paint.command.CommandType;
-import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.model.CommandType;
+import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.exception.CommandTypeNotSupportedException;
 
 public class CanvasOperationObjectFactory {

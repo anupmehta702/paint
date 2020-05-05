@@ -1,29 +1,29 @@
 package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
-import com.anup.paint.command.model.InputCommand;
-import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.canvas.exception.CanvasOperationBaseException;
+import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
+import com.anup.paint.command.model.Coordinates;
+import com.anup.paint.command.model.InputCommand;
+
+import static com.anup.paint.canvas.operation.CanvasLineHelper.drawHorizontalLine;
+import static com.anup.paint.canvas.operation.CanvasLineHelper.drawVerticalLine;
 
 public class Line implements CanvasOperation {
 
     @Override
     public void execute(InputCommand input, Canvas canvas) throws CanvasOperationBaseException {
-        Character[][] initialDrawingArea = canvas.getClonedDrawingArea();
+        Character[][] clonedDrawingArea = canvas.getClonedDrawingArea();
+        Coordinates start = input.getStart();
+        Coordinates end = input.getEnd();
         if (isLineToDrawHorizontal(input)) {
-            drawHorizontalLine(input, initialDrawingArea);
+            drawHorizontalLine(start.getX(),start.getY(),end.getY(),input.getMarker(),clonedDrawingArea);
         } else if (isLineToDrawVertical(input)) {
-            drawVerticalLine(input, initialDrawingArea);
+            drawVerticalLine(start.getX(),start.getY(),end.getX(),input.getMarker(),clonedDrawingArea);
         }else{
             throw new DiagonalLineNotAllowedException("diagonal line not allowed ");
         }
-        canvas.mergeDrawingChanges(initialDrawingArea);
-    }
-
-    private void drawVerticalLine(InputCommand input, Character[][] canvas) {
-        for (int i = input.getStart().getX(); i <= input.getEnd().getX(); i++) {
-            canvas[i][input.getStart().getY()] = input.getMarker();
-        }
+        canvas.mergeDrawingChanges(clonedDrawingArea);
     }
 
     private boolean isLineToDrawHorizontal(InputCommand input) {
@@ -34,9 +34,5 @@ public class Line implements CanvasOperation {
         return input.getStart().getY() == input.getEnd().getY();
     }
 
-    private void drawHorizontalLine(InputCommand input, Character[][] canvas) {
-        for (int i = input.getStart().getY(); i <= input.getEnd().getY(); i++) {
-            canvas[input.getStart().getX()][i] = input.getMarker();
-        }
-    }
+
 }

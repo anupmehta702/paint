@@ -4,6 +4,9 @@ import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 
+import static com.anup.paint.canvas.operation.CanvasLineHelper.drawHorizontalLine;
+import static com.anup.paint.canvas.operation.CanvasLineHelper.drawVerticalLine;
+
 public class Rectangle implements CanvasOperation {
 
     @Override
@@ -31,15 +34,5 @@ public class Rectangle implements CanvasOperation {
         drawHorizontalLine(end.getX(),start.getY(),end.getY(),input.getMarker(),clonedDrawingArea);
     }
 
-    private void drawVerticalLine(int x ,int y,int x1,char marker, Character[][] clonedDrawingArea) {
-        for (int i = x; i <= x1; i++) {
-            clonedDrawingArea[i][y] = marker;
-        }
-    }
-    private void drawHorizontalLine(int x, int y, int y1,char marker, Character[][] clonedDrawingArea) {
-        for (int i = y; i <= y1; i++) {
-            clonedDrawingArea[x][i] = marker;
-        }
-    }
 
 }

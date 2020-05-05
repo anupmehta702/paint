@@ -1,17 +1,21 @@
 package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
+import com.anup.paint.canvas.exception.OutOfBoundaryException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 
+import static com.anup.paint.canvas.operation.CanvasLineHelper.checkCoordinatesForOutOfBoundaryCondition;
 import static com.anup.paint.canvas.operation.CanvasLineHelper.drawHorizontalLine;
 import static com.anup.paint.canvas.operation.CanvasLineHelper.drawVerticalLine;
 
 public class Rectangle implements CanvasOperation {
 
     @Override
-    public void execute(InputCommand input, Canvas canvas) {
+    public void execute(InputCommand input, Canvas canvas) throws OutOfBoundaryException {
         Character[][] clonedDrawingArea = canvas.getClonedDrawingArea();
+
+        checkCoordinatesForOutOfBoundaryCondition(input.getStart(),input.getEnd(),canvas);
 
         drawHorizontalLines(input, clonedDrawingArea);
         drawVerticalLines(input,clonedDrawingArea);

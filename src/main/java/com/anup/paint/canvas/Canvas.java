@@ -66,4 +66,11 @@ public final class Canvas {
         System.out.println();
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

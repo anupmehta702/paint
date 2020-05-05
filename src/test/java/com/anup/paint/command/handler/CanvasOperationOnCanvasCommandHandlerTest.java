@@ -3,9 +3,11 @@ package com.anup.paint.command.handler;
 import com.anup.paint.command.CommandType;
 import com.anup.paint.command.Coordinates;
 import com.anup.paint.command.InputCommand;
-import com.anup.paint.draw.DrawObjectFactory;
+import com.anup.paint.command.exception.InputCommandException;
+import com.anup.paint.draw.CanvasOperationObjectFactory;
 import com.anup.paint.draw.Line;
 import com.anup.paint.command.exception.CommandTypeNotSupportedException;
+import com.anup.paint.draw.exception.DrawException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,9 +20,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DrawOnCanvasCommandHandlerTest {
+public class CanvasOperationOnCanvasCommandHandlerTest {
     @Mock
-    DrawObjectFactory objectFactory;
+    CanvasOperationObjectFactory objectFactory;
     @Mock
     Line line ;
     InputCommand input = new InputCommand(CommandType.LINE,new Coordinates(1,2),new Coordinates(1,4));;
@@ -28,11 +30,11 @@ public class DrawOnCanvasCommandHandlerTest {
 
     @Before
     public void setup() throws CommandTypeNotSupportedException {
-        when(objectFactory.getDrawObject(input)).thenReturn(line);
+        when(objectFactory.getCanvasOperationObject(input)).thenReturn(line);
     }
 
     @Test
-    public void executeCommandTest() throws CommandTypeNotSupportedException {
+    public void executeCommandTest() throws InputCommandException, DrawException {
         DrawOnCanvasCommandHandler cmdHandler = new DrawOnCanvasCommandHandler(objectFactory);
         cmdHandler.executeCommand(input,canvas);
         verify(line,times(1)).execute(input,canvas);

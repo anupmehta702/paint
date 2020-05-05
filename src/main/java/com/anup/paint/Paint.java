@@ -1,18 +1,15 @@
 package com.anup.paint;
 
 import com.anup.paint.command.InputCommand;
-import com.anup.paint.command.exception.InputCommandException;
 import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
-import com.anup.paint.draw.DrawObjectFactory;
-import com.anup.paint.command.exception.CommandTypeNotSupportedException;
-import com.anup.paint.draw.exception.DrawException;
+import com.anup.paint.draw.CanvasOperationObjectFactory;
 
 public final class Paint {
 
     private final char canvas[][];
     private final int width;
     private final int height;
-    private DrawOnCanvasCommandHandler canvasCommandHandler = new DrawOnCanvasCommandHandler(new DrawObjectFactory());
+    private DrawOnCanvasCommandHandler canvasCommandHandler = new DrawOnCanvasCommandHandler(new CanvasOperationObjectFactory());
 
     public Paint(int width, int height) {
         this.width = width;

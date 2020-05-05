@@ -4,7 +4,7 @@ import com.anup.paint.command.InputCommand;
 import com.anup.paint.draw.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.draw.exception.DrawException;
 
-public class Line implements Draw {
+public class Line implements CanvasOperation {
 
     @Override
     public char[][] execute(InputCommand input, char[][] canvas) throws DrawException{

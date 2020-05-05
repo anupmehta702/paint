@@ -2,21 +2,20 @@ package com.anup.paint.command.handler;
 
 import com.anup.paint.command.InputCommand;
 import com.anup.paint.command.exception.InputCommandException;
-import com.anup.paint.draw.Draw;
-import com.anup.paint.draw.DrawObjectFactory;
-import com.anup.paint.command.exception.CommandTypeNotSupportedException;
+import com.anup.paint.draw.CanvasOperation;
+import com.anup.paint.draw.CanvasOperationObjectFactory;
 import com.anup.paint.draw.exception.DrawException;
 
 public class DrawOnCanvasCommandHandler {
-    private DrawObjectFactory drawObjectFactory;
+    private CanvasOperationObjectFactory canvasOperationObjectFactory;
 
-    public DrawOnCanvasCommandHandler(DrawObjectFactory drawObjectFactory) {
-        this.drawObjectFactory = drawObjectFactory;
+    public DrawOnCanvasCommandHandler(CanvasOperationObjectFactory canvasOperationObjectFactory) {
+        this.canvasOperationObjectFactory = canvasOperationObjectFactory;
     }
 
     public void executeCommand(InputCommand input, char[][] canvas) throws DrawException, InputCommandException {
-        Draw draw = drawObjectFactory.getDrawObject(input);
-        draw.execute(input, canvas);
+        CanvasOperation canvasOperation = canvasOperationObjectFactory.getCanvasOperationObject(input);
+        canvasOperation.execute(input, canvas);
 
     }
 

@@ -2,7 +2,7 @@ package com.anup.paint.draw;
 
 import com.anup.paint.command.InputCommand;
 
-public class Rectangle implements Draw {
+public class Rectangle implements CanvasOperation {
 
     @Override
     public char[][] execute(InputCommand input, char[][] canvas) {

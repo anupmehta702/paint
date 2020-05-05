@@ -8,29 +8,29 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class DrawObjectFactoryTest {
+public class CanvasOperationObjectFactoryTest {
 
-    DrawObjectFactory objectFactory = new DrawObjectFactory();
+    CanvasOperationObjectFactory objectFactory = new CanvasOperationObjectFactory();
 
     @Test
     public void getDrawObjectTest() throws CommandTypeNotSupportedException {
         InputCommand input_one = new InputCommand(CommandType.LINE, new Coordinates(1, 2), new Coordinates(1, 3));
-        Draw drawObj = objectFactory.getDrawObject(input_one);
-        assertTrue(drawObj instanceof Line);
+        CanvasOperation canvasOperationObj = objectFactory.getCanvasOperationObject(input_one);
+        assertTrue(canvasOperationObj instanceof Line);
 
         InputCommand input_two = new InputCommand(CommandType.RECTANGLE, new Coordinates(1, 2), new Coordinates(1, 3));
-        drawObj = objectFactory.getDrawObject(input_two);
-        assertTrue(drawObj instanceof Rectangle);
+        canvasOperationObj = objectFactory.getCanvasOperationObject(input_two);
+        assertTrue(canvasOperationObj instanceof Rectangle);
 
         InputCommand input_three = new InputCommand(CommandType.BUCKET_FILL, new Coordinates(1, 2), 'c');
-        drawObj = objectFactory.getDrawObject(input_three);
-        assertTrue(drawObj instanceof BucketFill);
+        canvasOperationObj = objectFactory.getCanvasOperationObject(input_three);
+        assertTrue(canvasOperationObj instanceof BucketFill);
     }
 
     @Test(expected = CommandTypeNotSupportedException.class)
     public void exceptionHandlingForGetObjectMethodTest() throws CommandTypeNotSupportedException {
         InputCommand input_one = new InputCommand(CommandType.CANVAS, new Coordinates(1, 2));
-        Draw drawObj = objectFactory.getDrawObject(input_one);
+        CanvasOperation canvasOperationObj = objectFactory.getCanvasOperationObject(input_one);
     }
 
 

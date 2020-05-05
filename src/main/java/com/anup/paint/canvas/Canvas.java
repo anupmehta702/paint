@@ -3,7 +3,7 @@ package com.anup.paint.canvas;
 public final class Canvas {
     private final int width;
     private final int height;
-    private  char[][] drawingArea;
+    private char[][] drawingArea;
 
     public Canvas(int width, int height) {
         this.width = width;
@@ -12,6 +12,7 @@ public final class Canvas {
         initializeCanvas();
         markBorder();
     }
+
     private void initializeCanvas() {
         for (int i = 0; i < width + 2; i++) {
             for (int j = 0; j < height + 2; j++) {
@@ -33,8 +34,19 @@ public final class Canvas {
         }
     }
 
-    public char[][] getDrawingArea() {
+
+    public char[][] getClonedDrawingArea() {
         return drawingArea.clone();
+    }
+
+    public void mergeDrawingChanges(char[][] inputDrawingArea) {
+        for (int i = 0; i < width + 2; i++) {
+            for (int j = 0; j < height + 2; j++) {
+                if (inputDrawingArea[i][j] != ' ' && inputDrawingArea[i][j] != this.drawingArea[i][j]) {
+                    this.drawingArea[i][j] = inputDrawingArea[i][j];
+                }
+            }
+        }
     }
 
     public void print() {

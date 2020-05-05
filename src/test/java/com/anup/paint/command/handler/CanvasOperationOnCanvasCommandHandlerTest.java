@@ -1,23 +1,21 @@
 package com.anup.paint.command.handler;
 
-import com.anup.paint.command.model.CommandType;
-import com.anup.paint.command.model.Coordinates;
-import com.anup.paint.command.model.InputCommand;
-import com.anup.paint.command.exception.InputCommandException;
+import com.anup.paint.canvas.Canvas;
+import com.anup.paint.canvas.exception.DrawException;
 import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 import com.anup.paint.canvas.operation.Line;
 import com.anup.paint.command.exception.CommandTypeNotSupportedException;
-import com.anup.paint.canvas.exception.DrawException;
+import com.anup.paint.command.exception.InputCommandException;
+import com.anup.paint.command.model.CommandType;
+import com.anup.paint.command.model.Coordinates;
+import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CanvasOperationOnCanvasCommandHandlerTest {
@@ -26,7 +24,7 @@ public class CanvasOperationOnCanvasCommandHandlerTest {
     @Mock
     Line line ;
     InputCommand input = new InputCommand(CommandType.LINE,new Coordinates(1,2),new Coordinates(1,4));;
-    char[][] canvas = new char[5][5];
+    Canvas canvas =  new Canvas(4,4);
 
     @Before
     public void setup() throws CommandTypeNotSupportedException {

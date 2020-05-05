@@ -10,6 +10,8 @@ public class CanvasOperationObjectFactory {
             return new Line();
         }else if (CommandType.RECTANGLE == input.getCommandType() ){
             return new Rectangle();
+        }else if (CommandType.BUCKET_FILL == input.getCommandType() ){
+            return new BucketFill();
         }
         throw new CommandTypeNotSupportedException(input);
 

@@ -1,5 +1,6 @@
 package com.anup.paint.canvas.operation;
 
+import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.canvas.exception.DrawException;
@@ -7,15 +8,16 @@ import com.anup.paint.canvas.exception.DrawException;
 public class Line implements CanvasOperation {
 
     @Override
-    public char[][] execute(InputCommand input, char[][] canvas) throws DrawException{
+    public void execute(InputCommand input, Canvas canvas) throws DrawException{
+        char[][] initialDrawingArea = canvas.getClonedDrawingArea();
         if (isLineToDrawHorizontal(input)) {
-            drawHorizontalLine(input, canvas);
+            drawHorizontalLine(input, initialDrawingArea);
         } else if (isLineToDrawVertical(input)) {
-            drawVerticalLine(input, canvas);
+            drawVerticalLine(input, initialDrawingArea);
         }else{
             throw new DiagonalLineNotAllowedException("diagonal line not allowed ");
         }
-        return canvas;
+        canvas.mergeDrawingChanges(initialDrawingArea);
     }
 
     private void drawVerticalLine(InputCommand input, char[][] canvas) {

@@ -1,55 +1,47 @@
 package com.anup.paint;
 
+import com.anup.paint.canvas.Canvas;
+import com.anup.paint.command.model.CommandType;
+import com.anup.paint.command.model.Coordinates;
+import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
 import org.junit.Test;
 
+
+import static com.anup.paint.CreateCanvasHelper.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 
 public class PaintTest {
+
     Paint paint;
-    int width ;
-    int height ;
 
     @Before
-    public void test(){
-        width = 4;
-        height = 4;
-        paint = new Paint(width, height);
+    public void setup(){
+        paint = new Paint();
     }
 
     @Test
-    public void paintInitializationTest() {
-
-        char expectedCanvas[][] = new char[width + 2][height + 2];
-
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
-                expectedCanvas[i][j]=' ';
-            }
-        }
-
-        //for  columns
-        expectedCanvas[1][0]='|';expectedCanvas[2][0]='|';expectedCanvas[3][0]='|';expectedCanvas[4][0]='|';expectedCanvas[5][0]='|';
-        expectedCanvas[1][5]='|';expectedCanvas[2][5]='|';expectedCanvas[3][5]='|';expectedCanvas[4][5]='|';expectedCanvas[5][5]='|';
-
-        //rows
-        expectedCanvas[0][0]='-';expectedCanvas[0][1]='-';expectedCanvas[0][2]='-';expectedCanvas[0][3]='-';expectedCanvas[0][4]='-';expectedCanvas[0][5]='-';
-        expectedCanvas[5][0]='-';expectedCanvas[5][1]='-';expectedCanvas[5][2]='-';expectedCanvas[5][3]='-';expectedCanvas[5][4]='-';expectedCanvas[5][5]='-';
-
-        assertArrayEquals(expectedCanvas, paint.getCanvas());
-        paint.print();
-    }
-
-    @Test
-    public void canvasCloneTest(){
-        char[][] originalCanvas = paint.getCanvas();
-        originalCanvas[2][3]='X';
-        assertNotEquals(originalCanvas,paint.getCanvas());
+    public void createCanvasTest(){
+        paint.createCanvas(4,4);
+        assertNotNull(paint.getCanvas());
     }
 
     @Test
     public void executeCommandTest(){
+        InputCommand drawLineCommand = new InputCommand(CommandType.LINE,new Coordinates(2,2),new Coordinates(2,4));
+        paint.createCanvas(width, height);
+        paint.executeCanvasCommand(drawLineCommand);
+        Canvas expectedCanvas = new Canvas(width,height);
+        char[][] drawingArea = expectedCanvas.getClonedDrawingArea();
+        drawingArea[2][2] = 'x';drawingArea[2][3] = 'x';drawingArea[2][4] = 'x';
+        assertArrayEquals(drawingArea,paint.getCanvas().getClonedDrawingArea());
+    }
+
+    @Test
+    public void executeCommandTestWithoutCanvas(){
 
     }
 

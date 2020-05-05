@@ -1,65 +1,36 @@
 package com.anup.paint;
 
+import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
 import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 
-public final class Paint {
+public  class Paint {
 
-    private final char canvas[][];
-    private final int width;
-    private final int height;
+    private Canvas canvas;
     private DrawOnCanvasCommandHandler canvasCommandHandler = new DrawOnCanvasCommandHandler(new CanvasOperationObjectFactory());
 
-    public Paint(int width, int height) {
-        this.width = width;
-        this.height = height;
-        canvas = new char[width + 2][height + 2];
-        initializeCanvas();
-        markBorder();
+    public Paint() {
 
     }
 
-    private void initializeCanvas() {
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
-                canvas[i][j] = ' ';
-            }
-        }
+    public Canvas getCanvas() {
+        return this.canvas;
     }
 
-    private void markBorder() {
-        //for  columns
-        for (int i = 0; i < height + 2; i++) {
-            canvas[i][0] = '|';
-            canvas[i][width + 1] = '|';
-        }
-        //for rows
-        for (int i = 0; i < width + 2; i++) {
-            canvas[0][i] = '-';
-            canvas[height + 1][i] = '-';
-        }
+    public void print(){
+        this.canvas.print();
     }
 
-    public char[][] getCanvas() {
-        return canvas.clone();
+
+    public void createCanvas(int width , int height){
+        this.canvas = new Canvas(width, height);
+        print();
     }
 
-    public void print() {
-        System.out.println();
-        for (int i = 0; i < width + 2; i++) {
-            System.out.println();
-            for (int j = 0; j < height + 2; j++) {
-                System.out.print(canvas[i][j]);
-            }
-        }
-        System.out.println();
-    }
-
-    public void executeCommand( InputCommand input){
-        char[][] canvasClone = canvas.clone();
+    public void executeCanvasCommand( InputCommand input){
         try {
-            canvasCommandHandler.executeCommand(input,canvasClone);
+            canvasCommandHandler.executeCommand(input,canvas);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

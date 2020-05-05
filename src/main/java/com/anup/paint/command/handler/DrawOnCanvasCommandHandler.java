@@ -1,5 +1,6 @@
 package com.anup.paint.command.handler;
 
+import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.exception.InputCommandException;
 import com.anup.paint.canvas.operation.CanvasOperation;
@@ -13,7 +14,7 @@ public class DrawOnCanvasCommandHandler {
         this.canvasOperationObjectFactory = canvasOperationObjectFactory;
     }
 
-    public void executeCommand(InputCommand input, char[][] canvas) throws DrawException, InputCommandException {
+    public void executeCommand(InputCommand input, Canvas canvas) throws DrawException, InputCommandException {
         CanvasOperation canvasOperation = canvasOperationObjectFactory.getCanvasOperationObject(input);
         canvasOperation.execute(input, canvas);
 

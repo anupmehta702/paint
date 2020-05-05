@@ -27,11 +27,7 @@ public class CanvasOperationObjectFactoryTest {
         assertTrue(canvasOperationObj instanceof BucketFill);
     }
 
-    @Test(expected = CommandTypeNotSupportedException.class)
-    public void exceptionHandlingForGetObjectMethodTest() throws CommandTypeNotSupportedException {
-        InputCommand input_one = new InputCommand(CommandType.CANVAS, new Coordinates(1, 2));
-        CanvasOperation canvasOperationObj = objectFactory.getCanvasOperationObject(input_one);
-    }
+
 
 
 }

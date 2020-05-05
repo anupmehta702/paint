@@ -1,10 +1,12 @@
 Concerns/Potential Issues
 DrawObjectFactory must be static.
-BucketFill also categorized under Draw.
+BucketFill also categorized under CanvasException.
+Treated canvas creation as separate command .
+Did not have command for every operation .Instead had only one command which took care of all operation
 
 TODO
 Create canvas object with height & Width
-InputCommandException write logic in handler
+OutOfBoundaryException write logic in handler
 Test case for execute method in Paint
 rename Draw and execute method 
 

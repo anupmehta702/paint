@@ -1,7 +1,7 @@
 package com.anup.paint.command.handler;
 
 import com.anup.paint.canvas.Canvas;
-import com.anup.paint.canvas.exception.DrawException;
+import com.anup.paint.canvas.exception.CanvasOperationBaseException;
 import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 import com.anup.paint.canvas.operation.Line;
 import com.anup.paint.command.exception.CommandTypeNotSupportedException;
@@ -32,7 +32,7 @@ public class CanvasOperationOnCanvasCommandHandlerTest {
     }
 
     @Test
-    public void executeCommandTest() throws InputCommandException, DrawException {
+    public void executeCommandTest() throws InputCommandException, CanvasOperationBaseException {
         DrawOnCanvasCommandHandler cmdHandler = new DrawOnCanvasCommandHandler(objectFactory);
         cmdHandler.executeCommand(input,canvas);
         verify(line,times(1)).execute(input,canvas);

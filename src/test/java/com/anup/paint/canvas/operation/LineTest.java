@@ -2,8 +2,7 @@ package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
 import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
-import com.anup.paint.canvas.exception.DrawException;
-import com.anup.paint.command.model.CommandType;
+import com.anup.paint.canvas.exception.CanvasOperationBaseException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import static com.anup.paint.command.model.CommandType.LINE;
 import static org.junit.Assert.assertArrayEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 public class LineTest {
@@ -30,7 +28,7 @@ public class LineTest {
     }
 
     @Test
-    public void executeMethodTestForHorizontalLine() throws DrawException {
+    public void executeMethodTestForHorizontalLine() throws CanvasOperationBaseException {
         InputCommand cmdForHorizontalLine = new InputCommand(LINE,
                 new Coordinates(2, 2), new Coordinates(2, 4));
         line.execute(cmdForHorizontalLine, inputCanvas);
@@ -43,7 +41,7 @@ public class LineTest {
 
 
     @Test
-    public void executeMethodTestForVerticalLine() throws DrawException {
+    public void executeMethodTestForVerticalLine() throws CanvasOperationBaseException {
         InputCommand cmdForVerticalLine = new InputCommand(LINE,
                 new Coordinates(1, 2), new Coordinates(3, 2));
         line.execute(cmdForVerticalLine, inputCanvas);
@@ -55,7 +53,7 @@ public class LineTest {
     }
 
     @Test
-    public void executeMethodTestForOverlappingLine() throws DrawException {
+    public void executeMethodTestForOverlappingLine() throws CanvasOperationBaseException {
         InputCommand cmdForHorizontalLine = new InputCommand(LINE,
                 new Coordinates(2, 2), new Coordinates(2, 4));
         line.execute(cmdForHorizontalLine, inputCanvas);
@@ -75,7 +73,7 @@ public class LineTest {
 
 
     @Test(expected = DiagonalLineNotAllowedException.class)
-    public void executeMethodTestForDiagonalLine() throws DrawException {
+    public void executeMethodTestForDiagonalLine() throws CanvasOperationBaseException {
         InputCommand cmdForHorizontalLine = new InputCommand(LINE,
                 new Coordinates(2, 1), new Coordinates(3, 4));
         line.execute(cmdForHorizontalLine, inputCanvas);

@@ -3,7 +3,7 @@ package com.anup.paint.draw;
 import com.anup.paint.command.CommandType;
 import com.anup.paint.command.Coordinates;
 import com.anup.paint.command.InputCommand;
-import com.anup.paint.draw.exception.NotSupportedCommandType;
+import com.anup.paint.command.exception.CommandTypeNotSupportedException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +13,7 @@ public class DrawObjectFactoryTest {
     DrawObjectFactory objectFactory = new DrawObjectFactory();
 
     @Test
-    public void getDrawObjectTest() throws NotSupportedCommandType {
+    public void getDrawObjectTest() throws CommandTypeNotSupportedException {
         InputCommand input_one = new InputCommand(CommandType.LINE, new Coordinates(1, 2), new Coordinates(1, 3));
         Draw drawObj = objectFactory.getDrawObject(input_one);
         assertTrue(drawObj instanceof Line);
@@ -27,8 +27,8 @@ public class DrawObjectFactoryTest {
         assertTrue(drawObj instanceof BucketFill);
     }
 
-    @Test(expected = NotSupportedCommandType.class)
-    public void exceptionHandlingForGetObjectMethodTest() throws NotSupportedCommandType {
+    @Test(expected = CommandTypeNotSupportedException.class)
+    public void exceptionHandlingForGetObjectMethodTest() throws CommandTypeNotSupportedException {
         InputCommand input_one = new InputCommand(CommandType.CANVAS, new Coordinates(1, 2));
         Draw drawObj = objectFactory.getDrawObject(input_one);
     }

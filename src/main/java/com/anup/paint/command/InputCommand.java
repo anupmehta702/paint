@@ -28,6 +28,18 @@ public final class InputCommand {
         return commandType;
     }
 
+    public Coordinates getStart() {
+        return start;
+    }
+
+    public Coordinates getEnd() {
+        return end;
+    }
+
+    public char getMarker() {
+        return marker;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,8 +1,11 @@
 package com.anup.paint;
 
 import com.anup.paint.command.InputCommand;
+import com.anup.paint.command.exception.InputCommandException;
 import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
 import com.anup.paint.draw.DrawObjectFactory;
+import com.anup.paint.command.exception.CommandTypeNotSupportedException;
+import com.anup.paint.draw.exception.DrawException;
 
 public final class Paint {
 
@@ -57,6 +60,11 @@ public final class Paint {
     }
 
     public void executeCommand( InputCommand input){
-        canvasCommandHandler.executeCommand(input,canvas.clone());
+        char[][] canvasClone = canvas.clone();
+        try {
+            canvasCommandHandler.executeCommand(input,canvasClone);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }

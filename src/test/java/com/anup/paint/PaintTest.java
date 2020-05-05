@@ -48,5 +48,10 @@ public class PaintTest {
         assertNotEquals(originalCanvas,paint.getCanvas());
     }
 
+    @Test
+    public void executeCommandTest(){
+
+    }
+
 
 }

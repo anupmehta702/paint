@@ -1,5 +1,12 @@
 Concerns/Potential Issues
-DrawObjectFactory must be static .
+DrawObjectFactory must be static.
+BucketFill also categorized under Draw.
+
+TODO
+Create canvas object with height & Width
+InputCommandException write logic in handler
+Test case for execute method in Paint
+rename Draw and execute method 
 
 # paint
 create canvas and paint it with figures

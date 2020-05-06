@@ -1,7 +1,7 @@
 package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
-import com.anup.paint.canvas.exception.OutOfBoundaryException;
+import com.anup.paint.command.exception.OutOfBoundaryBaseException;
 import com.anup.paint.command.model.Coordinates;
 
 public class CanvasLineHelper {
@@ -16,11 +16,11 @@ public class CanvasLineHelper {
         }
     }
 
-    static void checkCoordinatesForOutOfBoundaryCondition(Coordinates start, Coordinates end, Canvas canvas) throws OutOfBoundaryException {
+    static void checkCoordinatesForOutOfBoundaryCondition(Coordinates start, Coordinates end, Canvas canvas) throws OutOfBoundaryBaseException {
         int maxX = start.getX() > end.getX() ? start.getX() : end.getX();
         int maxY = start.getY() > end.getY() ? start.getY() : end.getY();
         if(maxX > canvas.getHeight() || maxY > canvas.getWidth()){
-            throw new OutOfBoundaryException("Coordinates are out of canvas boundary");
+            throw new OutOfBoundaryBaseException("Coordinates are out of canvas boundary");
         }
     }
 

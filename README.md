@@ -6,7 +6,7 @@ Did not have command for every operation .Instead had only one command which too
 
 TODO
 Create canvas object with height & Width - Done
-OutOfBoundaryException write logic in handler
+OutOfBoundaryException write logic in handler - Done
 Test case for execute method in Paint -Done
 rename Draw and execute method - DOne 
 Mock test for print method in Paint 

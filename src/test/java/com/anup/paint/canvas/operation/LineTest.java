@@ -3,7 +3,6 @@ package com.anup.paint.canvas.operation;
 import com.anup.paint.canvas.Canvas;
 import com.anup.paint.canvas.exception.CanvasOperationBaseException;
 import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
-import com.anup.paint.canvas.exception.OutOfBoundaryException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
@@ -77,11 +76,4 @@ public class LineTest {
 
     }
 
-    @Test(expected = OutOfBoundaryException.class)
-    public void executeMethodTestForOutOfCanvasBoundaryCoordinates() throws CanvasOperationBaseException {
-        InputCommand cmdForHorizontalLine = new InputCommand(LINE,
-                new Coordinates(2, 1), new Coordinates(2, 10));
-        line.execute(cmdForHorizontalLine, inputCanvas);
-
-    }
-}
+  }

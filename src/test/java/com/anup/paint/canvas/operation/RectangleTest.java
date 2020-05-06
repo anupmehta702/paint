@@ -1,16 +1,12 @@
 package com.anup.paint.canvas.operation;
 
 import com.anup.paint.canvas.Canvas;
-import com.anup.paint.canvas.exception.CanvasOperationBaseException;
-import com.anup.paint.canvas.exception.OutOfBoundaryException;
 import com.anup.paint.command.model.CommandType;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.anup.paint.command.model.CommandType.LINE;
-import static com.anup.paint.command.model.CommandType.RECTANGLE;
 import static org.junit.Assert.assertArrayEquals;
 
 public class RectangleTest {
@@ -26,7 +22,7 @@ public class RectangleTest {
     }
 
     @Test
-    public void executeTest() throws OutOfBoundaryException {
+    public void executeTest()  {
         InputCommand rectInput = new InputCommand(CommandType.RECTANGLE,
                 new Coordinates(1, 1), new Coordinates(3, 4));
         rectangle.execute(rectInput, inputCanvas);
@@ -38,7 +34,7 @@ public class RectangleTest {
 
 
     @Test
-    public void executeMethodForOverlappingRectangleTest() throws OutOfBoundaryException {
+    public void executeMethodForOverlappingRectangleTest()  {
         InputCommand rectInput = new InputCommand(CommandType.RECTANGLE,
                 new Coordinates(1, 1), new Coordinates(3, 4));
         rectangle.execute(rectInput, inputCanvas);
@@ -59,13 +55,6 @@ public class RectangleTest {
         inputCanvas.print();
     }
 
-    @Test(expected = OutOfBoundaryException.class)
-    public void executeMethodTestForOutOfCanvasBoundaryCoordinates() throws CanvasOperationBaseException {
-        InputCommand cmdForHorizontalLine = new InputCommand(RECTANGLE,
-                new Coordinates(1, 1), new Coordinates(10, 4));
-        rectangle.execute(cmdForHorizontalLine, inputCanvas);
-
-    }
 
 
     private void createCustomRectangle() {

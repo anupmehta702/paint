@@ -3,13 +3,13 @@ package com.anup.paint;
 import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.exception.NoCanvasCreatedException;
 import com.anup.paint.command.model.InputCommand;
-import com.anup.paint.command.handler.DrawOnCanvasCommandHandler;
+import com.anup.paint.command.handler.CanvasOperationCommandHandler;
 import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 
 public class Paint {
 
     private Canvas canvas;
-    private DrawOnCanvasCommandHandler canvasCommandHandler = new DrawOnCanvasCommandHandler(new CanvasOperationObjectFactory());
+    private CanvasOperationCommandHandler canvasCommandHandler = new CanvasOperationCommandHandler(new CanvasOperationObjectFactory());
 
     public Paint() {
 

@@ -3,7 +3,6 @@ package com.anup.paint.canvas.operation;
 import com.anup.paint.canvas.Canvas;
 import com.anup.paint.canvas.exception.CanvasOperationBaseException;
 import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
-import com.anup.paint.canvas.exception.OutOfBoundaryException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 
@@ -19,7 +18,6 @@ public class Line implements CanvasOperation {
 
         Coordinates start = input.getStart();
         Coordinates end = input.getEnd();
-        checkCoordinatesForOutOfBoundaryCondition(start,end,canvas);
 
         if (isLineToDrawHorizontal(input)) {
             drawHorizontalLine(start.getX(),start.getY(),end.getY(),input.getMarker(),clonedDrawingArea);

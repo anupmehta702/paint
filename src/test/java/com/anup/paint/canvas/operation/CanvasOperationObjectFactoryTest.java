@@ -3,7 +3,7 @@ package com.anup.paint.canvas.operation;
 import com.anup.paint.command.model.CommandType;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
-import com.anup.paint.command.exception.CommandTypeNotSupportedException;
+import com.anup.paint.command.exception.CommandTypeNotSupportedBaseException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +13,7 @@ public class CanvasOperationObjectFactoryTest {
     CanvasOperationObjectFactory objectFactory = new CanvasOperationObjectFactory();
 
     @Test
-    public void getDrawObjectTest() throws CommandTypeNotSupportedException {
+    public void getDrawObjectTest() throws CommandTypeNotSupportedBaseException {
         InputCommand input_one = new InputCommand(CommandType.LINE, new Coordinates(1, 2), new Coordinates(1, 3));
         CanvasOperation canvasOperationObj = objectFactory.getCanvasOperationObject(input_one);
         assertTrue(canvasOperationObj instanceof Line);

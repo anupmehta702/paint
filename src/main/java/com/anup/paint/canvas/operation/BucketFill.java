@@ -13,7 +13,7 @@ public class BucketFill implements CanvasOperation {
         canvas.mergeDrawingChanges(clonedDrawingArea);
     }
 
-    public void fillColor(int x, int y, Character[][] clonedDrawingArea, Character marker) {
+    private void fillColor(int x, int y, Character[][] clonedDrawingArea, Character marker) {
         if (x > clonedDrawingArea.length - 2 || y > clonedDrawingArea[0].length - 2)
             return;
         if (x <= 0 || y <= 0)

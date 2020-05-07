@@ -1,11 +1,11 @@
 package com.anup.paint;
 
 import com.anup.paint.canvas.Canvas;
+import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 import com.anup.paint.command.exception.NoCanvasCreatedException;
+import com.anup.paint.command.handler.CanvasOperationCommandHandler;
 import com.anup.paint.command.model.CommandType;
 import com.anup.paint.command.model.InputCommand;
-import com.anup.paint.command.handler.CanvasOperationCommandHandler;
-import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 
 public class Paint {
 
@@ -20,12 +20,12 @@ public class Paint {
         return this.canvas;
     }
 
-    public void print() {
+    private void print() {
         this.canvas.print();
     }
 
 
-    public void executeInputCommand(InputCommand input) throws NoCanvasCreatedException {
+     void executeInputCommand(InputCommand input) throws NoCanvasCreatedException {
         if (input.getCommandType().equals(CommandType.CANVAS)) {
             this.canvas = new Canvas(input.getStart().getX(), input.getStart().getY());
         } else {

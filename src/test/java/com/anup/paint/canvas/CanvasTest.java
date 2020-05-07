@@ -8,9 +8,9 @@ import static org.junit.Assert.assertNotEquals;
 
 public class CanvasTest {
 
-    Canvas canvas;
-    int width;
-    int height;
+    private Canvas canvas;
+    private int width;
+    private int height;
 
     @Before
     public void test() {
@@ -76,12 +76,12 @@ public class CanvasTest {
     }
 
     @Test
-    public void mergeDrawingChangesTest(){
+    public void mergeDrawingChangesTest() {
         Character[][] newDrawingArea = canvas.getClonedDrawingArea();
         newDrawingArea[2][3] = 'x';
         assertNotEquals(newDrawingArea, canvas.getClonedDrawingArea());
         canvas.mergeDrawingChanges(newDrawingArea);
-        assertArrayEquals(newDrawingArea,canvas.getClonedDrawingArea());
+        assertArrayEquals(newDrawingArea, canvas.getClonedDrawingArea());
     }
 
 

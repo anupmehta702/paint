@@ -8,10 +8,8 @@ TODO
 Create canvas object with height & Width - Done
 OutOfBoundaryException write logic in handler - Done
 Test case for execute method in Paint -Done
-rename Draw and execute method - DOne 
-You can create line and rectangle object openly and still have x on border
-COnvert InputCommand to Enum
-Mock test for print method in Paint 
+rename Draw and execute method - Done 
+Mock test for print method in Paint -Cant do it 
 
 # paint
 create canvas and paint it with figures

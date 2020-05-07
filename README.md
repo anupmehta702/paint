@@ -1,18 +1,10 @@
-Concerns/Potential Issues
-DrawObjectFactory must be static.
-BucketFill also categorized under CanvasOperation.
-Treated canvas creation as separate command .
-Did not have command for every operation .Instead had only one command which took care of all operation
 
-TODO
-Create canvas object with height & Width - Done
-OutOfBoundaryException write logic in handler - Done
-Test case for execute method in Paint -Done
-rename Draw and execute method - Done 
-Mock test for print method in Paint -Cant do it 
 
-# paint
-create canvas and paint it with figures
+__Description__ 
+Run Main.java 
+starting entering commands
+Enter 'Q' to exit
+
 
 *** The Problem ***
 
@@ -84,3 +76,16 @@ enter command: B 10 3 o
 ----------------------
 
 enter command: Q
+
+__Concerns/Potential Issues__
+DrawObjectFactory must be static.
+BucketFill also categorized under CanvasOperation.
+Did not have command for every operation .Instead had only one command which took care of all operation
+
+__TODO__
+Create canvas object with height & Width - Done
+OutOfBoundaryException write logic in handler - Done
+Test case for execute method in Paint -Done
+rename Draw and execute method - Done 
+Mock test for print method in Paint -Cant do it
+Make coorodinates in inputCommand cloneable

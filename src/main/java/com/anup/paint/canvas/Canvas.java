@@ -8,7 +8,7 @@ public final class Canvas {
     public Canvas(int width, int height) {
         this.width = width;
         this.height = height;
-        this.drawingArea = new Character[height + 2][width + 2];
+        this.drawingArea = new Character[width + 2][height + 2];
         initializeCanvas();
         markBorder();
     }
@@ -22,15 +22,15 @@ public final class Canvas {
     }
 
     private void markBorder() {
-        //for  columns
-        for (int i = 0; i < drawingArea[0].length; i++) {
+        //for  columns drawingArea.length = 6
+        for (int i = 0; i < drawingArea.length; i++) {
             drawingArea[i][0] = '|';
-            drawingArea[i][width + 1] = '|';
+            drawingArea[i][height + 1] = '|';
         }
         //for rows
-        for (int i = 0; i < drawingArea.length; i++) {
+        for (int i = 0; i < drawingArea[0].length; i++) {
             drawingArea[0][i] = '-';
-            drawingArea[height + 1][i] = '-';
+            drawingArea[width + 1][i] = '-';
         }
     }
 
@@ -42,7 +42,7 @@ public final class Canvas {
                 clonedDrawingArea[i][j] = drawingArea[i][j];
             }
         }
-        return clonedDrawingArea;//drawingArea.clone();
+        return clonedDrawingArea;
     }
 
     public void mergeDrawingChanges(Character[][] inputDrawingArea) {

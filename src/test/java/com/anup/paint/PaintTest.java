@@ -8,10 +8,8 @@ import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
 import org.junit.Test;
 
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class PaintTest {
@@ -26,16 +24,19 @@ public class PaintTest {
     }
 
     @Test
-    public void createCanvasTest(){
-        paint.createCanvas(width,height);
+    public void createCanvasTest() throws NoCanvasCreatedException {
+        InputCommand createCanvasCommand = new InputCommand(CommandType.CANVAS,new Coordinates(width,height));
+        paint.executeInputCommand(createCanvasCommand);
         assertNotNull(paint.getCanvas());
     }
 
     @Test
     public void executeCommandTest() throws NoCanvasCreatedException {
+        InputCommand createCanvasCommand = new InputCommand(CommandType.CANVAS,new Coordinates(width,height));
+        paint.executeInputCommand(createCanvasCommand);
+
         InputCommand drawLineCommand = new InputCommand(CommandType.LINE,new Coordinates(2,2),new Coordinates(2,4));
-        paint.createCanvas(width, height);
-        paint.executeCanvasCommand(drawLineCommand);
+        paint.executeInputCommand(drawLineCommand);
 
         Canvas expectedCanvas = new Canvas(width,height);
         Character[][] drawingArea = expectedCanvas.getClonedDrawingArea();
@@ -47,7 +48,7 @@ public class PaintTest {
     @Test(expected = NoCanvasCreatedException.class)
     public void executeCommandTestWithoutCanvas() throws NoCanvasCreatedException {
         InputCommand drawLineCommand = new InputCommand(CommandType.LINE,new Coordinates(2,2),new Coordinates(2,4));
-        paint.executeCanvasCommand(drawLineCommand);
+        paint.executeInputCommand(drawLineCommand);
     }
 
 

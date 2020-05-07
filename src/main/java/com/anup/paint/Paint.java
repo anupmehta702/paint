@@ -2,6 +2,7 @@ package com.anup.paint;
 
 import com.anup.paint.canvas.Canvas;
 import com.anup.paint.command.exception.NoCanvasCreatedException;
+import com.anup.paint.command.model.CommandType;
 import com.anup.paint.command.model.InputCommand;
 import com.anup.paint.command.handler.CanvasOperationCommandHandler;
 import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
@@ -24,20 +25,23 @@ public class Paint {
     }
 
 
-    public void createCanvas(int width, int height) {
-        this.canvas = new Canvas(width, height);
+    public void executeInputCommand(InputCommand input) throws NoCanvasCreatedException {
+        if (input.getCommandType().equals(CommandType.CANVAS)) {
+            this.canvas = new Canvas(input.getStart().getX(), input.getStart().getY());
+        } else {
+            executeCanvasCommand(input);
+        }
         print();
     }
 
-    public void executeCanvasCommand(InputCommand input) throws NoCanvasCreatedException {
+    private void executeCanvasCommand(InputCommand input) throws NoCanvasCreatedException {
         if (this.canvas == null) {
-            throw new NoCanvasCreatedException("Canvas not created. Cannot perform any operation without canvas");
+            throw new NoCanvasCreatedException("CANVAS not created. Cannot perform any operation without canvas");
         }
         try {
             canvasCommandHandler.executeCommand(input, canvas);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        print();
     }
 }

@@ -1,6 +1,6 @@
 Concerns/Potential Issues
 DrawObjectFactory must be static.
-BucketFill also categorized under CanvasException.
+BucketFill also categorized under CanvasOperation.
 Treated canvas creation as separate command .
 Did not have command for every operation .Instead had only one command which took care of all operation
 
@@ -9,6 +9,8 @@ Create canvas object with height & Width - Done
 OutOfBoundaryException write logic in handler - Done
 Test case for execute method in Paint -Done
 rename Draw and execute method - DOne 
+You can create line and rectangle object openly and still have x on border
+COnvert InputCommand to Enum
 Mock test for print method in Paint 
 
 # paint

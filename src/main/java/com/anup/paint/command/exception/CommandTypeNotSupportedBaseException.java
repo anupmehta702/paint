@@ -6,4 +6,7 @@ public class CommandTypeNotSupportedBaseException extends InputCommandBaseExcept
     public CommandTypeNotSupportedBaseException(InputCommand input) {
         super("Command type - "+input.getCommandType()+" not supported ");
     }
+    public CommandTypeNotSupportedBaseException(String s) {
+        super(s);
+    }
 }

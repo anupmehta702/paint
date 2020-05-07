@@ -17,7 +17,7 @@ public class CanvasOperationCommandHandler {
     }
 
     public void executeCommand(InputCommand input, Canvas canvas) throws CanvasOperationBaseException, InputCommandBaseException {
-        checkCoordinatesForOutOfBoundaryCondition(input,canvas);
+        checkCoordinatesForOutOfBoundaryCondition(input, canvas);
         CanvasOperation canvasOperation = canvasOperationObjectFactory.getCanvasOperationObject(input);
         canvasOperation.execute(input, canvas);
     }
@@ -25,11 +25,18 @@ public class CanvasOperationCommandHandler {
     private void checkCoordinatesForOutOfBoundaryCondition(InputCommand input, Canvas canvas) throws OutOfBoundaryBaseException {
         Coordinates start = input.getStart();
         Coordinates end = input.getEnd();
-        int maxX = start.getX() > end.getX() ? start.getX() : end.getX();
-        int maxY = start.getY() > end.getY() ? start.getY() : end.getY();
-        if(maxX > canvas.getHeight() || maxY > canvas.getWidth()){
+        int maxX = start.getX();
+        int maxY = start.getY();
+        if (end != null) {
+            maxX = start.getX() > end.getX() ? start.getX() : end.getX();
+            maxY = start.getY() > end.getY() ? start.getY() : end.getY();
+        }
+        if (maxX > canvas.getWidth() || maxY > canvas.getHeight()) {
             throw new OutOfBoundaryBaseException("Coordinates are out of canvas boundary");
         }
+        /*if (maxX > canvas.getHeight() || maxY > canvas.getWidth()) {
+            throw new OutOfBoundaryBaseException("Coordinates are out of canvas boundary");
+        }*/
     }
 
 }

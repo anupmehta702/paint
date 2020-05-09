@@ -32,16 +32,16 @@ enter command: L 6 3 6 4
 ----------------------
 |                    |
 |xxxxxx              |
-|     row              |
-|     row              |
+|     x              |
+|     x              |
 ----------------------
 
 enter command: R 14 1 18 3
 ----------------------
 |             xxxxx  |
-|xxxxxx       row   row  |
-|     row       xxxxx  |
-|     row              |
+|xxxxxx       x   x  |
+|     x       xxxxx  |
+|     x              |
 ----------------------
 
 enter command: B 10 3 o

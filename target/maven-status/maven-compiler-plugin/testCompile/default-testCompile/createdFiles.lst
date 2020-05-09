@@ -1,0 +1,8 @@
+com\anup\paint\canvas\operation\RectangleTest.class
+com\anup\paint\command\model\InputProcessorTest.class
+com\anup\paint\canvas\operation\BucketFillTest.class
+com\anup\paint\PaintTest.class
+com\anup\paint\canvas\operation\LineTest.class
+com\anup\paint\canvas\CanvasTest.class
+com\anup\paint\command\handler\CanvasOperationCommandHandlerTest.class
+com\anup\paint\canvas\operation\CanvasOperationObjectFactoryTest.class

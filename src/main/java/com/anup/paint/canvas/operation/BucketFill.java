@@ -9,7 +9,7 @@ public class BucketFill implements CanvasOperation {
     public void execute(InputCommand input, Canvas canvas) {
         Character[][] clonedDrawingArea = canvas.getClonedDrawingArea();
         Coordinates start = input.getStart();
-        fillColor(start.getX(), start.getY(), clonedDrawingArea, input.getMarker());
+        fillColor(start.getRow(), start.getColumn(), clonedDrawingArea, input.getMarker());
         canvas.mergeDrawingChanges(clonedDrawingArea);
     }
 

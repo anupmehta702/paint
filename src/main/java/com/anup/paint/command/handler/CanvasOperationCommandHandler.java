@@ -25,11 +25,11 @@ public class CanvasOperationCommandHandler {
     private void checkCoordinatesForOutOfBoundaryCondition(InputCommand input, Canvas canvas) throws OutOfBoundaryBaseException {
         Coordinates start = input.getStart();
         Coordinates end = input.getEnd();
-        int maxX = start.getX();
-        int maxY = start.getY();
+        int maxX = start.getRow();
+        int maxY = start.getColumn();
         if (end != null) {
-            maxX = start.getX() > end.getX() ? start.getX() : end.getX();
-            maxY = start.getY() > end.getY() ? start.getY() : end.getY();
+            maxX = start.getRow() > end.getRow() ? start.getRow() : end.getRow();
+            maxY = start.getColumn() > end.getColumn() ? start.getColumn() : end.getColumn();
         }
         if (maxX > canvas.getWidth() || maxY > canvas.getHeight()) {
             throw new OutOfBoundaryBaseException("Coordinates are out of canvas boundary");

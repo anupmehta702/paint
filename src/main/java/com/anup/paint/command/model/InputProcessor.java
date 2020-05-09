@@ -8,8 +8,7 @@ import com.anup.paint.command.exception.InvalidInputDataException;
 import static com.anup.paint.command.model.CommandType.*;
 
 
-//Note ,I am treating x as rows & y as columns
-// ,however the input treats it otherwise ,hence have to reverse the input order
+//Note We are treating x as columns and y as rows
 
 public class InputProcessor {
 

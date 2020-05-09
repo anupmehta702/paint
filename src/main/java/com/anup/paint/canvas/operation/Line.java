@@ -6,7 +6,6 @@ import com.anup.paint.canvas.exception.DiagonalLineNotAllowedException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 
-import static com.anup.paint.canvas.operation.CanvasLineHelper.checkCoordinatesForOutOfBoundaryCondition;
 import static com.anup.paint.canvas.operation.CanvasLineHelper.drawHorizontalLine;
 import static com.anup.paint.canvas.operation.CanvasLineHelper.drawVerticalLine;
 
@@ -20,9 +19,9 @@ public class Line implements CanvasOperation {
         Coordinates end = input.getEnd();
 
         if (isLineToDrawHorizontal(input)) {
-            drawHorizontalLine(start.getX(),start.getY(),end.getY(),input.getMarker(),clonedDrawingArea);
+            drawHorizontalLine(start.getRow(),start.getColumn(),end.getColumn(),input.getMarker(),clonedDrawingArea);
         } else if (isLineToDrawVertical(input)) {
-            drawVerticalLine(start.getX(),start.getY(),end.getX(),input.getMarker(),clonedDrawingArea);
+            drawVerticalLine(start.getRow(),start.getColumn(),end.getRow(),input.getMarker(),clonedDrawingArea);
         }else{
             throw new DiagonalLineNotAllowedException("diagonal line not allowed ");
         }
@@ -32,11 +31,11 @@ public class Line implements CanvasOperation {
 
 
     private boolean isLineToDrawHorizontal(InputCommand input) {
-        return input.getStart().getX() == input.getEnd().getX();
+        return input.getStart().getRow() == input.getEnd().getRow();
     }
 
     private boolean isLineToDrawVertical(InputCommand input) {
-        return input.getStart().getY() == input.getEnd().getY();
+        return input.getStart().getColumn() == input.getEnd().getColumn();
     }
 
 

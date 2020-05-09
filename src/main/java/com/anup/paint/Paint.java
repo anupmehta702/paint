@@ -27,7 +27,7 @@ public class Paint {
 
      void executeInputCommand(InputCommand input) throws NoCanvasCreatedException {
         if (input.getCommandType().equals(CommandType.CANVAS)) {
-            this.canvas = new Canvas(input.getStart().getX(), input.getStart().getY());
+            this.canvas = new Canvas(input.getStart().getRow(), input.getStart().getColumn());
         } else {
             executeCanvasCommand(input);
         }

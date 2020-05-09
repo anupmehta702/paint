@@ -17,8 +17,8 @@ public class CanvasLineHelper {
     }
 
     static void checkCoordinatesForOutOfBoundaryCondition(Coordinates start, Coordinates end, Canvas canvas) throws OutOfBoundaryBaseException {
-        int maxX = start.getX() > end.getX() ? start.getX() : end.getX();
-        int maxY = start.getY() > end.getY() ? start.getY() : end.getY();
+        int maxX = start.getRow() > end.getRow() ? start.getRow() : end.getRow();
+        int maxY = start.getColumn() > end.getColumn() ? start.getColumn() : end.getColumn();
         if(maxX > canvas.getHeight() || maxY > canvas.getWidth()){
             throw new OutOfBoundaryBaseException("Coordinates are out of canvas boundary");
         }

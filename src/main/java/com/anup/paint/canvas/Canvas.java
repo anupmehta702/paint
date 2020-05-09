@@ -3,7 +3,7 @@ package com.anup.paint.canvas;
 public final class Canvas {
     private final int width;
     private final int height;
-    private Character[][] drawingArea;
+    private final Character[][] drawingArea;
 
     public Canvas(int width, int height) {
         this.width = width;
@@ -22,7 +22,7 @@ public final class Canvas {
     }
 
     private void markBorder() {
-        //for  columns drawingArea.length = 6
+        //for  columns
         for (int i = 0; i < drawingArea.length; i++) {
             drawingArea[i][0] = '|';
             drawingArea[i][height + 1] = '|';

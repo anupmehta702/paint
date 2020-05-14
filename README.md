@@ -89,3 +89,7 @@ Test case for execute method in Paint -Done
 rename Draw and execute method - Done 
 Mock test for print method in Paint -Cant do it
 Make coorodinates in inputCommand cloneable
+
+Move Paint class to canvas package
+No null check for InputCommand in Paint 
+InputCommandValidation should happen in Paint and not in cmdHandler

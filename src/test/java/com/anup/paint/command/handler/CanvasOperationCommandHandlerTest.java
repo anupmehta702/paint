@@ -6,7 +6,6 @@ import com.anup.paint.canvas.operation.CanvasOperationObjectFactory;
 import com.anup.paint.canvas.operation.Line;
 import com.anup.paint.command.exception.CommandTypeNotSupportedBaseException;
 import com.anup.paint.command.exception.InputCommandBaseException;
-import com.anup.paint.command.exception.OutOfBoundaryBaseException;
 import com.anup.paint.command.model.Coordinates;
 import com.anup.paint.command.model.InputCommand;
 import org.junit.Before;
@@ -20,13 +19,13 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CanvasOperationCommandHandlerTest {
-    CanvasOperationCommandHandler cmdHandler;
+    private CanvasOperationCommandHandler cmdHandler;
     @Mock
-    CanvasOperationObjectFactory objectFactory;
+     CanvasOperationObjectFactory objectFactory;
     @Mock
-    Line line ;
-    InputCommand input = new InputCommand(LINE,new Coordinates(1,2),new Coordinates(1,4));;
-    Canvas canvas =  new Canvas(4,4);
+     Line line ;
+    private InputCommand input = new InputCommand(LINE,new Coordinates(1,2),new Coordinates(1,4));
+    private Canvas canvas =  new Canvas(4,4);
 
     @Before
     public void setup() throws CommandTypeNotSupportedBaseException {
@@ -39,14 +38,6 @@ public class CanvasOperationCommandHandlerTest {
 
         cmdHandler.executeCommand(input,canvas);
         verify(line,times(1)).execute(input,canvas);
-    }
-
-    @Test(expected = OutOfBoundaryBaseException.class)
-    public void executeMethodTestForOutOfCanvasBoundaryCoordinates() throws CanvasOperationBaseException, InputCommandBaseException {
-        InputCommand cmdForHorizontalLine = new InputCommand(LINE,
-                new Coordinates(1, 1), new Coordinates(10, 4));
-        cmdHandler.executeCommand(cmdForHorizontalLine,canvas);
-
     }
 
 }

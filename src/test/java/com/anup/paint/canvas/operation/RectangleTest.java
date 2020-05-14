@@ -10,9 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 
 public class RectangleTest {
-    Canvas inputCanvas;
-    Character[][] expectedDrawingArea;
-    Rectangle rectangle;
+    private Canvas inputCanvas;
+    private Character[][] expectedDrawingArea;
+    private Rectangle rectangle;
 
     @Before
     public void setup() {

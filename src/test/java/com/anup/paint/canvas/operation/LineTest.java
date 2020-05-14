@@ -12,9 +12,9 @@ import static com.anup.paint.command.model.CommandType.LINE;
 import static org.junit.Assert.assertArrayEquals;
 
 public class LineTest {
-    Canvas inputCanvas;
-    Character[][] expectedCanvas;
-    Line line;
+    private Canvas inputCanvas;
+    private Character[][] expectedCanvas;
+    private Line line;
 
     @Before
     public void setup() {

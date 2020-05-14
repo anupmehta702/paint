@@ -91,5 +91,5 @@ Mock test for print method in Paint -Cant do it
 Make coorodinates in inputCommand cloneable
 
 Move Paint class to canvas package
-No null check for InputCommand in Paint 
-InputCommandValidation should happen in Paint and not in cmdHandler
+No null check for InputCommand in Paint - Done
+InputCommandValidation should happen in Paint and not in cmdHandler - Done
